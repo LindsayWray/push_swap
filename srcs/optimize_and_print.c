@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_order.c                                      :+:    :+:            */
+/*   optimize_and_print.c                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lwray <lwray@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/07/13 14:41:04 by lwray         #+#    #+#                 */
-/*   Updated: 2021/07/13 14:41:09 by lwray         ########   odam.nl         */
+/*   Created: 2021/07/13 14:42:52 by lwray         #+#    #+#                 */
+/*   Updated: 2021/07/13 14:42:54 by lwray         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ascending_order(t_element *stack)
+void	print_operations(t_operations *operations)
 {
-	if (!stack)
-		return (1);
-	while (stack->next != NULL && stack->content < stack->next->content)
-		stack = stack->next;
-	if (stack->next == NULL)
-		return (1);
-	return (0);
+	while (operations)
+	{
+		ft_printf("%s\n", operations->content);
+		operations = operations->next;
+	}
+}
+
+void	optimize_and_print(void)
+{
+	t_operations	*operations;
+
+	operations = get_operation_list();
+	optimizer(operations);
+	print_operations(operations);
+	clear_operations(&operations);
 }

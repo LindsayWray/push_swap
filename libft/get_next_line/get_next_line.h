@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_order.c                                      :+:    :+:            */
+/*   get_next_line.h                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lwray <lwray@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/07/13 14:41:04 by lwray         #+#    #+#                 */
-/*   Updated: 2021/07/13 14:41:09 by lwray         ########   odam.nl         */
+/*   Created: 2021/03/02 17:38:58 by lwray         #+#    #+#                 */
+/*   Updated: 2021/03/02 17:39:01 by lwray         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <stdlib.h>
+# include <unistd.h>
 
-int	ascending_order(t_element *stack)
-{
-	if (!stack)
-		return (1);
-	while (stack->next != NULL && stack->content < stack->next->content)
-		stack = stack->next;
-	if (stack->next == NULL)
-		return (1);
-	return (0);
-}
+# define BUFFER_SIZE 1
+
+int		get_next_line(int fd, char **line);
+void	go_back(char *buff, char *rest);
+int		ft_strlen(char *str);
+char	*concat(char *first_line, char *addstr);
+int		find_newline(char *buff);
+char	*split_rest(char *rest);
+char	*ft_strdup(char *src);
+
+#endif

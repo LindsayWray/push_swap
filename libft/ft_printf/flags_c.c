@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void 	flags_c(int input, t_flagstruct flags)
+void	flags_c(int input, t_flagstruct flags)
 {
 	int	filler;
 

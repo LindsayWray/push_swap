@@ -73,7 +73,7 @@ static void	bigger_width(unsigned int input, int len, t_flagstruct flags)
 	}
 }
 
-void 	flags_u(unsigned int input, t_flagstruct flags)
+void	flags_u(unsigned int input, t_flagstruct flags)
 {
 	int	len;
 

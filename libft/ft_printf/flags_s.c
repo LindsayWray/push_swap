@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void 	flags_s(char *input, t_flagstruct flags)
+void	flags_s(char *input, t_flagstruct flags)
 {
 	int	len;
 	int	filler;

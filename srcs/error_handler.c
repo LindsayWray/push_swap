@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_order.c                                      :+:    :+:            */
+/*   error_handler.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lwray <lwray@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/07/13 14:41:04 by lwray         #+#    #+#                 */
-/*   Updated: 2021/07/13 14:41:09 by lwray         ########   odam.nl         */
+/*   Created: 2021/07/13 14:41:35 by lwray         #+#    #+#                 */
+/*   Updated: 2021/07/13 14:41:37 by lwray         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ascending_order(t_element *stack)
+void	parsing_error(t_element **stack_a)
 {
-	if (!stack)
-		return (1);
-	while (stack->next != NULL && stack->content < stack->next->content)
-		stack = stack->next;
-	if (stack->next == NULL)
-		return (1);
-	return (0);
+	clear_stack(stack_a);
+	write(STDERR_FILENO, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
+void	malloc_error(t_element **stack_a)
+{
+	clear_stack(stack_a);
+	write(STDERR_FILENO, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
+void	operation_input_error(t_element **stack_a, t_element **stack_b)
+{
+	clear_stack(stack_a);
+	clear_stack(stack_b);
+	write(STDERR_FILENO, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }

@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
-HEADERFILES := libft.h ft_printf/ft_printf.h
+HEADERFILES := libft.h ft_printf/ft_printf.h get_next_line/get_next_line.h
 SRCS = ft_atoi.c \
 	ft_isdigit.c \
 	ft_memcpy.c \
@@ -35,6 +35,7 @@ SRCS = ft_atoi.c \
 	ft_putchar_fd.c \
 	ft_strdup.c \
 	ft_strncmp.c \
+	ft_strequal.c \
 	ft_toupper.c \
 	ft_isalpha.c \
 	ft_memchr.c \
@@ -75,14 +76,16 @@ SRCS = ft_atoi.c \
 	ft_printf/ft_strlen.c \
 	ft_printf/flags_null.c \
 	ft_printf/flags_f.c \
-	ft_printf/ft_putdecimal.c
+	ft_printf/ft_putdecimal.c \
+	get_next_line/get_next_line.c \
+	get_next_line/get_next_line_utils.c
 
 FLAGS = -Wall -Wextra -Werror
 
 OBJS = ${SRCS:.c=.o}
 
-.c.o:
-	gcc ${FLAGS} -c $< -o ${<:.c=.o}
+.c.o: $(HEADERFILES)
+	gcc ${FLAGS} -c $< -o ${<:.c=.o} 
 
 all: ${NAME}
 

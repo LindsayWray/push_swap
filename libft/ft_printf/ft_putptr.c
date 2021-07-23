@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void 	ft_putptr(unsigned long addr, int padding)
+void	ft_putptr(unsigned long addr, int padding)
 {
 	ft_putnstr("0x", 2);
 	print_padding(padding, addr);

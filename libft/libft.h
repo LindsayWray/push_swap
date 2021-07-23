@@ -16,10 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
 
 typedef struct s_element
 {
-	int			content;
+	int					content;
 	struct s_element	*next;
 }				t_element;
 
@@ -51,6 +52,7 @@ size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 int				ft_strlen(char *str);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int				ft_strncmp(char *s1, char *s2, unsigned int n);
+int				ft_strequal(char *s1, char *s2);
 char			*ft_strnstr(const char *hay, const char *needle, size_t len);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strtrim(char const *s1, char const *set);
@@ -58,14 +60,14 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
 
-t_element			*ft_lstlast(t_element *lst);
+t_element		*ft_lstlast(t_element *lst);
 void			ft_lstadd_back(t_element **lst, t_element *new);
 void			ft_lstadd_front(t_element **lst, t_element *new);
 void			ft_lstdelone(t_element *lst, void (*del)(int));
 void			ft_lstclear(t_element **lst, void (*del)(int));
 void			ft_lstiter(t_element *lst, void (*f)(int));
-t_element			*ft_lstnew(int content);
-t_element			*ft_lstmap(t_element *lst, int(*f)(int), void (*del)(int));
+t_element		*ft_lstnew(int content);
+t_element		*ft_lstmap(t_element *lst, int(*f)(int), void (*del)(int));
 int				ft_lstsize(t_element *lst);
 
 #endif

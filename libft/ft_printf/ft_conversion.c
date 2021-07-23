@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void 	ft_conversion(va_list ap, char conv, t_flagstruct flags)
+void	ft_conversion(va_list ap, char conv, t_flagstruct flags)
 {
 	if (conv == 'c')
 		flags_c((va_arg(ap, int)), flags);

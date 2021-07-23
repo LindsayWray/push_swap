@@ -1,13 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   rotate.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: lwray <lwray@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/07/13 14:43:45 by lwray         #+#    #+#                 */
+/*   Updated: 2021/07/13 14:43:47 by lwray         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	rotate(t_element **stack)
+void	rotate(t_element **stack)
 {
 	t_element	*rotating_element;
 
-	rotating_element = *stack;
-	*stack = (*stack)->next;
-	rotating_element->next = NULL;
-	ft_lstadd_back(stack, rotating_element);
+	if (ft_lstsize(*(stack)) > 1)
+	{
+		rotating_element = *stack;
+		*stack = (*stack)->next;
+		rotating_element->next = NULL;
+		ft_lstadd_back(stack, rotating_element);
+	}
 }
 
 void	rotate_both_stacks(t_element **stack_a, t_element **stack_b,
@@ -17,26 +32,20 @@ void	rotate_both_stacks(t_element **stack_a, t_element **stack_b,
 	rotate_function(stack_b);
 }
 
-void 	ra(t_element **stack_a)
+void	ra(t_element **stack_a)
 {
 	if (ft_lstsize(*(stack_a)) > 1)
 	{
 		rotate(stack_a);
-		add_operation("ra\n");
+		add_operation("ra");
 	}
 }
 
-void 	rb(t_element **stack_b)
+void	rb(t_element **stack_b)
 {
 	if (ft_lstsize(*(stack_b)) > 1)
 	{
 		rotate(stack_b);
-		add_operation("rb\n");
+		add_operation("rb");
 	}
-}
-
-void	rr(t_element **stack_a, t_element **stack_b)
-{
-	rotate_both_stacks(stack_a, stack_b, rotate);
-	add_operation("rr\n");
 }
