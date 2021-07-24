@@ -16,6 +16,7 @@ HEADERFILES := srcs/push_swap.h
 PUSH_SWAP_SRCS := srcs/main.c \
 				srcs/make_chunks.c \
 				srcs/stack_sort.c \
+				srcs/stack_sort_pt2.c \
 				srcs/optimizer.c \
 				srcs/small_stack_sort.c \
 				srcs/optimize_and_print.c
@@ -39,11 +40,11 @@ LIBFT := libft/
 all: $(NAME) $(CHECKER)
 
 $(NAME): $(OBJFILES) 
-	make -C $(LIBFT)
+	@make -C $(LIBFT)
 	gcc -o $@ $^ -L $(LIBFT) -lft
 
 $(CHECKER): $(CHECKER_OBJFILES)
-	make -C $(LIBFT)
+	@make -C $(LIBFT)
 	gcc -o $@ $^ -L $(LIBFT) -lft
 
 obj/%.o: srcs/%.c $(HEADERFILES)

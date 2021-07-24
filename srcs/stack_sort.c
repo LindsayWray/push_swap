@@ -12,50 +12,6 @@
 
 #include "push_swap.h"
 
-static int	get_highest_value(t_element *stack_b, int chunk_size)
-{
-	int	i;
-	int	highest_value;
-
-	i = 0;
-	if (stack_b)
-		highest_value = stack_b->content;
-	while (i < chunk_size)
-	{
-		stack_b = stack_b->next;
-		if (!stack_b)
-			break ;
-		if (stack_b->content > highest_value)
-			highest_value = stack_b->content;
-		i++;
-	}
-	return (highest_value);
-}
-
-void	push_back_to_a(t_element **stack_a, t_element **stack_b, int chunk_size)
-{
-	int	highest_value;
-	int	reverse_counter;
-
-	reverse_counter = 0;
-	while (chunk_size > 0)
-	{
-		highest_value = get_highest_value((*stack_b), chunk_size);
-		while ((*stack_b)->content != highest_value)
-		{
-			rb(stack_b);
-			reverse_counter++;
-		}
-		pa(stack_b, stack_a);
-		while (reverse_counter > 0)
-		{
-			rrb(stack_b);
-			reverse_counter--;
-		}
-		chunk_size--;
-	}
-}
-
 static void	push_chunks_to_b(t_element **stack_a, t_element **stack_b,
 	t_chunk high_chunk, t_chunk low_chunk)
 {

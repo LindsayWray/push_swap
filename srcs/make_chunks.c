@@ -72,7 +72,9 @@ static t_chunk	*divide_in_chunks(int *array, int len, int amount_of_chunks)
 
 int	chunk_amount(int len)
 {
-	if (len > 6 && len <= 100)
+	if (len > 6 && len <= 20)
+		return (4);
+	if (len > 20 && len <= 100)
 		return (10);
 	if (len > 100 && len <= 200)
 		return (12);
